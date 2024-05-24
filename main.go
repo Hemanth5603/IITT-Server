@@ -19,6 +19,6 @@ func main() {
 	infrastructure.InitializePostgresSQL()
 	infrastructure.InitializeSpaces()
 
-	app.Listen(":3000")
+	app.Listen(":8081")
 
 }

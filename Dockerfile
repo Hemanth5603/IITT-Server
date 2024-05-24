@@ -1,12 +1,12 @@
 FROM golang:latest
 
+RUN mkdir /app
+
+ADD . /app
+
 WORKDIR /app
 
-ADD . .
+RUN go build -o main . 
 
-RUN go build -o bin .
-
-EXPOSE 80 
-
-ENTRYPOINT [ "/app/bin" ]
+CMD ["/app/main"] 
 
