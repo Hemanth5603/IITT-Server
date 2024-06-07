@@ -1,12 +1,12 @@
-FROM golang:latest
+# FROM golang:latest
 
-RUN mkdir /app
+# RUN mkdir /app
 
-ADD . /app
+# ADD . /app
 
-WORKDIR /app
+# WORKDIR /app
 
-RUN go build -o main . 
+# RUN go build -o main . 
 
-CMD ["/app/main"] 
+# CMD ["/app/main"] 
 
