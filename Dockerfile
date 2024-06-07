@@ -1,12 +1,17 @@
-# FROM golang:latest
+FROM golang:1.22.2-alpine 
 
-# RUN mkdir /app
+WORKDIR /app
 
-# ADD . /app
+COPY go.mod go.sum ./
 
-# WORKDIR /app
+RUN go mod tidy 
 
-# RUN go build -o main . 
+COPY . .
 
-# CMD ["/app/main"] 
+RUN go build -o main ./main.go
 
+RUN chmod +x main 
+
+EXPOSE 8080
+
+CMD ["./main"]
