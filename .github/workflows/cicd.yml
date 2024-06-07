@@ -18,7 +18,7 @@ jobs:
             - name: Inserting secret key 
               run: echo "SPACES_SECRET_KEY=${{ secrets.SPACES_SECRET_KEY}}" >> .env
             - name: Login to Docker Hub
-              run: docker login -u ${{ secrets.DOCKER_USERNAME}} -password-stdin ${{ secrets.DOCKER_PASSWORD }}
+              run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
             - name: Build docker image
               run: docker build -t hemanthx5603/goiitt .
             - name: Push image to docker hub
