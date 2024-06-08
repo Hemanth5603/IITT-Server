@@ -18,10 +18,10 @@ func init() {
 func InitializePostgresSQL() {
 	var err error
 	USER := "postgres"
-	PASS := "admin"
-	HOST := "localhost"
-	DBNAME := "IITT"
-	PORT := "5433"
+	PASS := "iitt-admin"
+	HOST := "iitt-db.c34oscioyvnc.eu-north-1.rds.amazonaws.com"
+	DBNAME := "iittdb"
+	PORT := "5432"
 
 	POSTGRES_CONNECTION_STRING = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", HOST, USER, PASS, DBNAME, PORT)
 
@@ -29,6 +29,8 @@ func InitializePostgresSQL() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to POSTGRES database: %v\n", err)
 		os.Exit(1)
+	} else {
+		fmt.Printf("conncted to database")
 	}
 	POSTGRES_DB.SetMaxIdleConns(10)
 
