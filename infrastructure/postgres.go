@@ -30,7 +30,7 @@ func InitializePostgresSQL() {
 		fmt.Fprintf(os.Stderr, "Unable to connect to POSTGRES database: %v\n", err)
 		os.Exit(1)
 	} else {
-		fmt.Printf("conncted to database")
+		fmt.Println("conncted to database")
 	}
 	POSTGRES_DB.SetMaxIdleConns(10)
 

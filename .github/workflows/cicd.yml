@@ -29,7 +29,7 @@ jobs:
         steps: 
             - name: Pull the docker Image
               run: docker pull hemanthx5603/goiitt:latest
-            - name: Delete old image 
+            - name: Delete old container
               run: docker rm -f go-app-container 
             - name: Run Docker Container
               run: docker run -d -p 8080:8081 --name go-app-container hemanthx5603/goiitt
