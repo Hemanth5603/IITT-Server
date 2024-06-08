@@ -24,7 +24,7 @@ jobs:
                 key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
                 restore-keys: |
                   ${{ runner.os }}-go-
-                    
+
             - name: Create .env file
               run: echo "S3_BUCKET_NAME=${{ secrets.S3_BUCKET_NAME}}" >> .env
             - name: Inserting space access key
@@ -33,7 +33,7 @@ jobs:
               run: echo "SPACES_SECRET_KEY=${{ secrets.SPACES_SECRET_KEY}}" >> .env
             - name: Login to Docker Hub
               run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-            - name: Build docker image
+            - name: Build docker contianer
               run: docker build -t hemanthx5603/goiitt .
             - name: Push image to docker hub
               run: docker push hemanthx5603/goiitt:latest
@@ -43,7 +43,7 @@ jobs:
         steps: 
             - name: Pull the docker Image
               run: docker pull hemanthx5603/goiitt:latest
-            - name: Delete old container
+            - name: Delete old image
               run: docker rm -f go-app-container 
             - name: Run Docker Container
               run: docker run -d -p 8080:8081 --name go-app-container hemanthx5603/goiitt
