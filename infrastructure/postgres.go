@@ -23,7 +23,7 @@ func InitializePostgresSQL() {
 	DBNAME := "iittdb"
 	PORT := "5432"
 
-	POSTGRES_CONNECTION_STRING = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=true", HOST, USER, PASS, DBNAME, PORT)
+	POSTGRES_CONNECTION_STRING = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=require", HOST, USER, PASS, DBNAME, PORT)
 
 	POSTGRES_DB, err = sql.Open("pgx", POSTGRES_CONNECTION_STRING)
 	if err != nil {
