@@ -14,6 +14,11 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
+	app.Post("/iitt/post", func(c *fiber.Ctx) error {
+		return c.Status(fiber.StatusOK).
+			JSON(fiber.Map{"status": "true", "post": "Accepted"})
+	})
+
 	workers.Routes(app)
 
 	infrastructure.InitializePostgresSQL()
