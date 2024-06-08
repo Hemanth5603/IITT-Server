@@ -29,6 +29,8 @@ jobs:
         steps: 
             - name: Pull the docker Image
               run: docker pull hemanthx5603/goiitt:latest
+            - name: Killing existing Container
+              run: docker kill go-app-container
             - name: Delete old container
               run: docker rm -f go-app-container 
             - name: Run Docker Container
