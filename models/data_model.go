@@ -13,6 +13,7 @@ type DataModel struct {
 	Longitude float64 `form:"longitude"`
 	Image     string  `form:"image"`
 	Category  string  `form:"category"`
+	Remarks   string  `form:"remarks"`
 }
 
 type SignUpRequest struct {

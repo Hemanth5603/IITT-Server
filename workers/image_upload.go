@@ -54,6 +54,7 @@ func uploadImage(ctx *fiber.Ctx) error {
 		Longitude: payload.Longitude,
 		Image:     idFile,
 		Category:  payload.Category,
+		Remarks:   payload.Remarks,
 	}
 
 	err = utils.InsertData(data)
