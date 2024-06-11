@@ -21,9 +21,14 @@ func RegisterUser(ctx *fiber.Ctx) error {
 	}
 
 	newUser := models.SignUpRequest{
-		Name:     payload.Name,
-		Email:    payload.Email,
-		Password: hashedPassword,
+		Name:          payload.Name,
+		Email:         payload.Email,
+		Password:      hashedPassword,
+		Location:      payload.Location,
+		Dob:           payload.Dob,
+		Phone:         payload.Phone,
+		Contributions: payload.Contributions,
+		Rank:          payload.Rank,
 	}
 
 	id, err := utils.InsertUser(newUser)

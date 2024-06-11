@@ -1,10 +1,15 @@
 package models
 
 type UserModel struct {
-	Id       int64  `json:"id"`
-	Email    string `json:email`
-	Name     string `json:name`
-	Password string `json:password`
+	Id            int64  `json:"id"`
+	Email         string `json:"email"`
+	Name          string `json:"name"`
+	Password      string `json:"password"`
+	Dob           string `json:"dob"`
+	Phone         string `json:"phone"`
+	Location      string `json:"location"`
+	Contributions int64  `json:"contributions"`
+	Rank          int64  `json:"rank"`
 }
 
 type DataModel struct {
@@ -17,9 +22,14 @@ type DataModel struct {
 }
 
 type SignUpRequest struct {
-	Email    string `json:email`
-	Name     string `json:name`
-	Password string `json:password`
+	Email         string `json:"email"`
+	Name          string `json:"name"`
+	Password      string `json:"password"`
+	Dob           string `json:"dob"`
+	Phone         string `json:"phone"`
+	Location      string `json:"location"`
+	Contributions int64  `json:"contributions"`
+	Rank          int64  `json:"rank"`
 }
 
 type LoginInRequest struct {

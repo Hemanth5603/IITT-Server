@@ -36,6 +36,16 @@ func Login(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.Status(fiber.StatusOK).
-		JSON(fiber.Map{"status": "True", "id": findUser.Id, "name": findUser.Name, "email": payload.Email})
+		JSON(fiber.Map{
+			"status":        "True",
+			"id":            findUser.Id,
+			"name":          findUser.Name,
+			"email":         payload.Email,
+			"phone":         findUser.Phone,
+			"dob":           findUser.Dob,
+			"contributions": findUser.Contributions,
+			"rank":          findUser.Rank,
+			"location":      findUser.Location,
+		})
 
 }
