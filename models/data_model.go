@@ -36,3 +36,7 @@ type LoginInRequest struct {
 	Email    string `json:email`
 	Password string `json:password`
 }
+
+type GetUserRequest struct {
+	Id int64 `json:"id"`
+}
