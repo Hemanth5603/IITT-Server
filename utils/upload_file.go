@@ -15,6 +15,7 @@ func UploadFile(path string, binaryFile []byte) error {
 		Bucket: aws.String("iittnif-bucket"),
 		Key:    aws.String(path),
 		Body:   tfb,
+		ACL:    aws.String("public-read-write"),
 	}
 
 	_, uploadErr := infrastructure.S3_CLIENT.PutObject(&toObject)
