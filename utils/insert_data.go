@@ -16,6 +16,12 @@ func InsertData(data models.DataModel) error {
 		data.Category,
 		data.Remarks,
 	)
+	if err != nil {
+		return err
+	}
+	// Updating Contributions Count
+
+	_, err = infrastructure.POSTGRES_DB.Exec(`UPDATE users SET contributions = contributions + 1 WHERE id = $1`, data.Id)
 
 	return err
 
