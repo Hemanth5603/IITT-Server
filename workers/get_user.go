@@ -17,7 +17,7 @@ func GetUser(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	findUser, err := utils.FindUserById(payload.Id)
+	findUser, rank, err := utils.FindUserById(payload.Id)
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
@@ -37,7 +37,7 @@ func GetUser(ctx *fiber.Ctx) error {
 			"phone":         findUser.Phone,
 			"dob":           findUser.Dob,
 			"contributions": findUser.Contributions,
-			"rank":          findUser.Rank,
+			"rank":          rank,
 			"location":      findUser.Location,
 		})
 
