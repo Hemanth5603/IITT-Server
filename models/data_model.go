@@ -31,6 +31,7 @@ type SignUpRequest struct {
 	Location      string `json:"location"`
 	Contributions int64  `json:"contributions"`
 	Rank          int64  `json:"rank"`
+	ProfileImage  string `json:"profile_image"`
 }
 
 type LoginInRequest struct {
