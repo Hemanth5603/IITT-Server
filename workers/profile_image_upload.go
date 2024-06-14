@@ -26,7 +26,7 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 
 	var idFile string
 
-	files := form.File["image"]
+	files := form.File["profile_image"]
 	var image string
 
 	for _, file := range files {
@@ -40,6 +40,7 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 		idFile = "/profiles/" + tuuid.String() + filepath.Ext(file.Filename)
 
 		err = utils.UploadFile(idFile, binaryFile)
+
 		if err != nil {
 			return ctx.Status(fiber.StatusBadRequest).
 				JSON(fiber.Map{"status": false, "error": err.Error(), "msg": "uploading file err"})
