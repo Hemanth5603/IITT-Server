@@ -32,7 +32,7 @@ func Login(ctx *fiber.Ctx) error {
 
 	if !match {
 		return ctx.Status(fiber.StatusConflict).
-			JSON(fiber.Map{"status": "false", "error": "Wrong Password"})
+			JSON(fiber.Map{"status": "false", "error": "Incorrect Password"})
 	}
 
 	return ctx.Status(fiber.StatusOK).

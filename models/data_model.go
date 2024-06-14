@@ -40,3 +40,8 @@ type LoginInRequest struct {
 type GetUserRequest struct {
 	Id int64 `json:"id"`
 }
+
+type ProfileUploadRequest struct {
+	Id           int64  `form:"id"`
+	ProfileImage string `form:"profile_image"`
+}
