@@ -34,6 +34,12 @@ func RegisterUser(ctx *fiber.Ctx) error {
 
 	id, err := utils.InsertUser(newUser)
 
+	if id == 0 {
+		return ctx.Status(fiber.StatusFound).JSON(fiber.Map{
+			"status": "false", "error": "User Already Exists"},
+		)
+	}
+
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
