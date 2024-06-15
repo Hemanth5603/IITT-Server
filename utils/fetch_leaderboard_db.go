@@ -10,7 +10,7 @@ func FetchLeaderBoardFromDB() ([]models.UserModel, error) {
 	var userList []models.UserModel
 
 	rows, err := infrastructure.POSTGRES_DB.Query(
-		"SELECT id, name, email, phone, dob, location, contributions, rank FROM users ORDER BY contributions DESC")
+		"SELECT id, name, email, phone, dob, location, contributions, rank, profile_image FROM users ORDER BY contributions DESC")
 
 	if err != nil {
 		return userList, err
@@ -27,8 +27,9 @@ func FetchLeaderBoardFromDB() ([]models.UserModel, error) {
 			location      string
 			contributions int64
 			rank          int64
+			profile_image string
 		)
-		if err := rows.Scan(&id, &name, &email, &phone, &dob, &location, &contributions, &rank); err != nil {
+		if err := rows.Scan(&id, &name, &email, &phone, &dob, &location, &contributions, &rank, &profile_image); err != nil {
 			return userList, err
 		}
 
@@ -41,6 +42,7 @@ func FetchLeaderBoardFromDB() ([]models.UserModel, error) {
 			Location:      location,
 			Contributions: contributions,
 			Rank:          rank,
+			ProfileImage:  profile_image,
 		})
 
 	}
