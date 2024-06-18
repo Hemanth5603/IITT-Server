@@ -7,7 +7,7 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/register", RegisterUser)
 	routes.Post("/iitt/login", Login)
 	routes.Get("/iitt/getUserUploads/:user_id", GetUploads)
-	routes.Get("/iitt/getLeaderBoard", GetLeaderBoard)
+	routes.Post("/iitt/getLeaderBoard", GetLeaderBoard)
 	routes.Post("/iitt/getUser", GetUser)
 	routes.Post("/iitt/uploadProfile", ProfileImageUpload)
 

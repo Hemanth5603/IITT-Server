@@ -1,6 +1,8 @@
 package workers
 
 import (
+	"fmt"
+
 	"github.com/Hemanth5603/IITT-Server/models"
 	"github.com/Hemanth5603/IITT-Server/utils"
 	"github.com/gofiber/fiber/v2"
@@ -8,9 +10,16 @@ import (
 
 func GetLeaderBoard(ctx *fiber.Ctx) error {
 
-	var userList []models.UserModel = []models.UserModel{}
+	var payload models.GetLeaderboardRequest
 
-	userList, err := utils.FetchLeaderBoardFromDB()
+	if err := ctx.BodyParser(&payload); err != nil {
+		return ctx.Status(fiber.StatusBadRequest).
+			JSON(fiber.Map{"status": "false", "error": err.Error()})
+	}
+	var userList []models.UserModel = []models.UserModel{}
+	fmt.Println("category", payload.Category)
+
+	userList, err := utils.FetchLeaderBoardFromDB(payload.Limit, payload.Category)
 
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
