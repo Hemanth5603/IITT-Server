@@ -20,6 +20,7 @@ type DataModel struct {
 	Image     string  `form:"image"`
 	Category  string  `form:"category"`
 	Remarks   string  `form:"remarks"`
+	Address   string  `form:"address"`
 }
 
 type SignUpRequest struct {

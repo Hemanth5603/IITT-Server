@@ -8,13 +8,14 @@ import (
 func InsertData(data models.DataModel) error {
 
 	_, err := infrastructure.POSTGRES_DB.Exec(
-		`INSERT INTO data(id, latitude, longitude, image, category, remarks) values($1, $2, $3, $4, $5, $6)`,
+		`INSERT INTO data(id, latitude, longitude, image, category, remarks, address) values($1, $2, $3, $4, $5, $6, $7)`,
 		data.Id,
 		data.Latitude,
 		data.Longitude,
 		data.Image,
 		data.Category,
 		data.Remarks,
+		data.Address,
 	)
 	if err != nil {
 		return err
