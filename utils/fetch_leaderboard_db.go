@@ -17,11 +17,11 @@ func FetchLeaderBoardFromDB(limit int64, category string) ([]models.UserModel, e
 	var err error
 
 	if category == "Default" && limit == 0 {
-		query = "SELECT id, name, email, phone, dob, location, contributions, rank, profile_image FROM users ORDER BY contributions DESC LIMIT 100"
+		query = "SELECT id, name, email, phone, dob, location, contributions, rank, profileimage FROM users ORDER BY contributions DESC LIMIT 100"
 		rows, err = infrastructure.POSTGRES_DB.Query(query)
 	} else if category != "Default" && limit == 0 {
 		query = `
-			SELECT u.id, name, email, phone, dob, location, contributions, rank, profile_image
+			SELECT u.id, name, email, phone, dob, location, contributions, rank, profileimage
 			FROM users u
 			JOIN (
 				SELECT id, COUNT(id) AS frequency
@@ -32,11 +32,11 @@ func FetchLeaderBoardFromDB(limit int64, category string) ([]models.UserModel, e
 			ORDER BY d.frequency DESC LIMIT 100;`
 		rows, err = infrastructure.POSTGRES_DB.Query(query, category)
 	} else if category == "Default" && limit != 0 {
-		query = "SELECT id, name, email, phone, dob, location, contributions, rank, profile_image FROM users ORDER BY contributions DESC LIMIT $1"
+		query = "SELECT id, name, email, phone, dob, location, contributions, rank, profileimage FROM users ORDER BY contributions DESC LIMIT $1"
 		rows, err = infrastructure.POSTGRES_DB.Query(query, limit)
 	} else if category != "Default" && limit != 0 {
 		query = `
-			SELECT u.id, name, email, phone, dob, location, contributions, rank, profile_image
+			SELECT u.id, name, email, phone, dob, location, contributions, rank, profileimage
 			FROM users u
 			JOIN (
 				SELECT id, COUNT(id) AS frequency

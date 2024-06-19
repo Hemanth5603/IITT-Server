@@ -26,7 +26,7 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 
 	var idFile string
 
-	files := form.File["profile_image"]
+	files := form.File["profileimage"]
 	var image string
 
 	for _, file := range files {
