@@ -11,7 +11,7 @@ type SignUpRequest struct {
 	Location      string `json:"location"`
 	Contributions int64  `json:"contributions"`
 	Rank          int64  `json:"rank"`
-	ProfileImage  string `json:"profile_image"`
+	ProfileImage  string `json:"profileimage"`
 	State         string `json:"state"`
 	City          string `json:"city"`
 	Pincode       int64  `json:"pincode"`
@@ -29,9 +29,9 @@ type GetUserRequest struct {
 
 type ProfileUpdateRequest struct {
 	Id           int64  `form:"id"`
-	FirstName    string `form:"first_name"`
-	LastName     string `form:"last_name"`
-	ProfileImage string `form:"profile_image"`
+	FirstName    string `form:"firstname"`
+	LastName     string `form:"lastname"`
+	ProfileImage string `form:"profileimage"`
 	Dob          string `form:"dob"`
 	Occupation   string `form:"occupation"`
 }

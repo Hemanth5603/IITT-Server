@@ -22,7 +22,7 @@ func InsertUser(payload models.SignUpRequest) (int64, error) {
 
 	} else {
 		err = infrastructure.POSTGRES_DB.QueryRow(
-			`INSERT INTO users(name, email, password, location, dob, phone, contributions, rank, profile_image, first_name, last_name, state, city, pincode, occupation) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING id`,
+			`INSERT INTO users(name, email, password, location, dob, phone, contributions, rank, profileimage, firstname, lastname, state, city, pincode, occupation) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING id`,
 			payload.Name,
 			payload.Email,
 			payload.Password,
