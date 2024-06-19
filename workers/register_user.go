@@ -33,6 +33,9 @@ func RegisterUser(ctx *fiber.Ctx) error {
 		Pincode:       payload.Pincode,
 		City:          payload.City,
 		State:         payload.State,
+		FirstName:     payload.FirstName,
+		LastName:      payload.LastName,
+		Occupation:    payload.Occupation,
 	}
 
 	id, err := utils.InsertUser(newUser)
