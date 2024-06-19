@@ -1,8 +1,9 @@
 package main
 
 import (
+	"github.com/Hemanth5603/IITT-Server/handlers"
 	"github.com/Hemanth5603/IITT-Server/infrastructure"
-	"github.com/Hemanth5603/IITT-Server/workers"
+
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -19,7 +20,7 @@ func main() {
 			JSON(fiber.Map{"status": "true", "post": "Accepted"})
 	})
 
-	workers.Routes(app)
+	handlers.Routes(app)
 
 	infrastructure.InitializePostgresSQL()
 	infrastructure.InitializeSpaces()

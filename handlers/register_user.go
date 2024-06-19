@@ -1,4 +1,4 @@
-package workers
+package handlers
 
 import (
 	"github.com/Hemanth5603/IITT-Server/models"

@@ -4,8 +4,8 @@ type UserModel struct {
 	Id            int64  `json:"id"`
 	Email         string `json:"email"`
 	Name          string `json:"name"`
-	FirstName     string `json:"first_name"`
-	LastName      string `json:"last_name"`
+	FirstName     string `json:"firstname"`
+	LastName      string `json:"lastname"`
 	Password      string `json:"password"`
 	Dob           string `json:"dob"`
 	Phone         string `json:"phone"`
@@ -15,7 +15,7 @@ type UserModel struct {
 	State         string `json:"state"`
 	City          string `json:"city"`
 	Pincode       int64  `json:"pincode"`
-	ProfileImage  string `json:"profile_image"`
+	ProfileImage  string `json:"profileimage"`
 	Occupation    string `json:"occupation"`
 }
 
