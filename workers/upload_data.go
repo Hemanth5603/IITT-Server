@@ -10,7 +10,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func uploadImage(ctx *fiber.Ctx) error {
+func uploadData(ctx *fiber.Ctx) error {
 	var payload models.DataModel
 	if err := ctx.BodyParser(&payload); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).

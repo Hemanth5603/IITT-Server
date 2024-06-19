@@ -40,6 +40,12 @@ func GetUser(ctx *fiber.Ctx) error {
 			"rank":          rank,
 			"location":      findUser.Location,
 			"profile_image": findUser.ProfileImage,
+			"first_name":    findUser.FirstName,
+			"last_name":     findUser.LastName,
+			"state":         findUser.State,
+			"city":          findUser.City,
+			"pincode":       findUser.Pincode,
+			"occupation":    findUser.Occupation,
 		})
 
 }

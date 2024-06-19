@@ -11,7 +11,7 @@ import (
 )
 
 func ProfileImageUpload(ctx *fiber.Ctx) error {
-	var payload models.ProfileUploadRequest
+	var payload models.ProfileUpdateRequest
 
 	if err := ctx.BodyParser(&payload); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
@@ -51,8 +51,6 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 
 	}
 
-	err = utils.InsertProfileImageDB(payload.Id, idFile)
-
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status": false, "error": err.Error(),
@@ -60,6 +58,6 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
-		"status": true, "message": "Profile Image Upload Sucessful",
+		"status": true, "message": "Profile Image Upload Sucessfull",
 	})
 }

@@ -3,6 +3,8 @@ package models
 type SignUpRequest struct {
 	Email         string `json:"email"`
 	Name          string `json:"name"`
+	FirstName     string `json:"first_name"`
+	LastName      string `json:"last_name"`
 	Password      string `json:"password"`
 	Dob           string `json:"dob"`
 	Phone         string `json:"phone"`
@@ -10,6 +12,10 @@ type SignUpRequest struct {
 	Contributions int64  `json:"contributions"`
 	Rank          int64  `json:"rank"`
 	ProfileImage  string `json:"profile_image"`
+	State         string `json:"state"`
+	City          string `json:"city"`
+	Pincode       int64  `json:"pincode"`
+	Occupation    string `json:"occupation"`
 }
 
 type LoginInRequest struct {
@@ -21,9 +27,13 @@ type GetUserRequest struct {
 	Id int64 `json:"id"`
 }
 
-type ProfileUploadRequest struct {
+type ProfileUpdateRequest struct {
 	Id           int64  `form:"id"`
+	FirstName    string `form:"first_name"`
+	LastName     string `form:"last_name"`
 	ProfileImage string `form:"profile_image"`
+	Dob          string `form:"dob"`
+	Occupation   string `form:"occupation"`
 }
 
 type GetLeaderboardRequest struct {

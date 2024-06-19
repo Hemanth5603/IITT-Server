@@ -6,8 +6,8 @@ import (
 )
 
 func FindUserById(id int64) (user models.UserModel, rank int64, err error) {
-	err = infrastructure.POSTGRES_DB.QueryRow("SELECT id, name, email, password, phone, location, dob, contributions, rank, profile_image FROM users WHERE id = $1", id).
-		Scan(&user.Id, &user.Name, &user.Email, &user.Password, &user.Phone, &user.Location, &user.Dob, &user.Contributions, &user.Rank, &user.ProfileImage)
+	err = infrastructure.POSTGRES_DB.QueryRow("SELECT id, name, first_name, last_name, email, password, phone, location, dob, contributions, rank, profile_image, state, city, pincode, occupation FROM users WHERE id = $1", id).
+		Scan(&user.Id, &user.Name, &user.FirstName, &user.LastName, &user.Email, &user.Password, &user.Phone, &user.Location, &user.Dob, &user.Contributions, &user.Rank, &user.ProfileImage, &user.State, &user.City, &user.Pincode, &user.Occupation)
 
 	if err != nil {
 		return models.UserModel{}, 0, err
