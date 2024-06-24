@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/Hemanth5603/IITT-Server/helpers"
 	"github.com/Hemanth5603/IITT-Server/models"
 	"github.com/Hemanth5603/IITT-Server/utils"
 	"github.com/gofiber/fiber/v2"
@@ -14,7 +15,7 @@ func RegisterUser(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	hashedPassword, err := utils.HashPassword(payload.Password)
+	hashedPassword, err := helpers.HashPassword(payload.Password)
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "err": err.Error()})

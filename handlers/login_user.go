@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 
+	"github.com/Hemanth5603/IITT-Server/helpers"
 	"github.com/Hemanth5603/IITT-Server/models"
 	"github.com/Hemanth5603/IITT-Server/utils"
 	"github.com/gofiber/fiber/v2"
@@ -28,7 +29,7 @@ func Login(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	match := utils.DecryptPassword(findUser.Password, payload.Password)
+	match := helpers.DecryptPassword(findUser.Password, payload.Password)
 
 	if !match {
 		return ctx.Status(fiber.StatusConflict).

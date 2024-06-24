@@ -40,3 +40,13 @@ type GetLeaderboardRequest struct {
 	Limit    int64  `json:"limit"`
 	Category string `json:"category"`
 }
+
+type SendMailRequest struct {
+	To    string `json:"to"`
+	Token string `json:"token"`
+}
+
+type VerifyOtpRequest struct {
+	Token string `json:"token"`
+	Otp   string `json:"otp"`
+}

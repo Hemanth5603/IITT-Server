@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/Hemanth5603/IITT-Server/helpers"
 	"github.com/Hemanth5603/IITT-Server/models"
-	"github.com/Hemanth5603/IITT-Server/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
@@ -30,7 +30,7 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 	var image string
 
 	for _, file := range files {
-		binaryFile, err := utils.FileToByteArray(file)
+		binaryFile, err := helpers.FileToByteArray(file)
 		if err != nil {
 			return ctx.Status(fiber.StatusBadRequest).
 				JSON(fiber.Map{"status": false, "error": err.Error(), "message": "binary conversion"})
@@ -39,7 +39,7 @@ func ProfileImageUpload(ctx *fiber.Ctx) error {
 		tuuid := uuid.New()
 		idFile = "/profiles/" + tuuid.String() + filepath.Ext(file.Filename)
 
-		err = utils.UploadFile(idFile, binaryFile)
+		err = helpers.UploadFile(idFile, binaryFile)
 
 		if err != nil {
 			return ctx.Status(fiber.StatusBadRequest).

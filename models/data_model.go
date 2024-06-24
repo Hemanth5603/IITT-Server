@@ -28,3 +28,12 @@ type DataModel struct {
 	Remarks   string  `form:"remarks"`
 	Address   string  `form:"address"`
 }
+
+type OTPData struct {
+	PhoneNumber string `json:"To,omitempty"`
+}
+
+type VerifyData struct {
+	User *OTPData `json:"user,omitempty" validate:"required"`
+	Code string   `json:"code,omitempty" validate:"required"`
+}

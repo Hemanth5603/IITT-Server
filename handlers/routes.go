@@ -1,6 +1,9 @@
 package handlers
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/Hemanth5603/IITT-Server/authentication"
+	"github.com/gofiber/fiber/v2"
+)
 
 func Routes(routes *fiber.App) {
 	routes.Post("/uploadImage", uploadData)
@@ -10,5 +13,8 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/getLeaderBoard", GetLeaderBoard)
 	routes.Post("/iitt/getUser", GetUser)
 	routes.Post("/iitt/updateProfile", UpdateProfile)
+	//routes.Post("/iitt/otp", authentication.SendSms)
+	routes.Post("/iitt/sendEmail", authentication.SendEmail)
+	routes.Post("/iitt/verifyOtp", authentication.VerifyOtp)
 
 }
