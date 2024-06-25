@@ -6,19 +6,19 @@ import (
 	"github.com/Hemanth5603/IITT-Server/infrastructure"
 )
 
-func DBHandleVerifyOtp(token string, otp string) (error, int) {
+func DBHandleVerifyOtp(token string, otp string) (int, error) {
 	var tokenExist string
 	var actualOtp string
 	err := infrastructure.POSTGRES_DB.QueryRow(
-		`SELECT token FROM verification WHERE token = $1`, token,
+		`SELECT token FROM verification WHERE token = $1 AND created_at < NOW() - INTERVAL 1 MINUTE`, token,
 	).Scan(&tokenExist)
 	fmt.Println(tokenExist)
 
 	if err != nil {
 		if err.Error() == "no rows in result set" {
-			return nil, 404
+			return 404, nil
 		}
-		return err, 0
+		return 0, err
 	} else {
 		err = infrastructure.POSTGRES_DB.QueryRow(
 			"SELECT otp FROM verification WHERE token = $1", token,
@@ -26,13 +26,13 @@ func DBHandleVerifyOtp(token string, otp string) (error, int) {
 		println(actualOtp)
 		if err != nil {
 			println("Error 0 Occoured")
-			return err, 0
+			return 0, err
 		}
 
 		if otp != actualOtp {
-			return err, 400
+			return 400, err
 		}
 
 	}
-	return nil, 200
+	return 200, nil
 }

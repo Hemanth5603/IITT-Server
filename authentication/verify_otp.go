@@ -15,7 +15,7 @@ func VerifyOtp(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	err, status := DBHandleVerifyOtp(payload.Token, payload.Otp)
+	status, err := DBHandleVerifyOtp(payload.Token, payload.Otp)
 
 	if err != nil {
 		return ctx.Status(fiber.StatusNotFound).
