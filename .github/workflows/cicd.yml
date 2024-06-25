@@ -41,8 +41,8 @@ jobs:
         needs: build
         runs-on: self-hosted
         steps: 
-            # - name: Pruning docker instances 
-            #   run: docker system prune -a -f
+            - name: Pruning docker instances 
+              run: docker system prune -a -f
             - name: Pull the docker Image
               run: docker pull hemanthx5603/goiitt:latest 
             - name: Stopping Docker Container
