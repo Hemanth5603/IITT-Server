@@ -21,11 +21,31 @@ func SendEmail(ctx *fiber.Ctx) error {
 	smtpHost := "smtp.gmail.com"
 	smtpPort := 587
 
+	// imagePath := "assets/iittnmicps.png"
+	// imageData, err := ioutil.ReadFile(imagePath)
+	// if err != nil {
+	// 	fmt.Println("Error reading image file:", err)
+	// 	return ctx.Status(fiber.StatusBadRequest).
+	// 		JSON(fiber.Map{"status": "false", "error": err.Error()})
+	// }
+
+	//base64Image := base64.StdEncoding.EncodeToString(imageData)
+
 	m := mail.NewMessage()
+
 	m.SetHeader("From", from)
 	m.SetHeader("To", payload.To)
 	m.SetHeader("Subject", "IITTNiF")
-	m.SetBody("text/plain", fmt.Sprintf("Here is the OTP Verification Code : %s", otp))
+	m.SetBody("text/html", fmt.Sprintf(`
+		<html>
+			<body style="font-family: Arial, sans-serif; text-align: center;">
+				<h2>Hello, Welcome to IITTNiF app</h2>
+				<p>Please use this OTP verification to verify your email ID:</p>
+				<div style="margin: 20px auto; padding: 10px 20px; background-color: #007BFF; color: white; font-size: 24px; font-weight: bold; display: inline-block; border-radius: 5px;">
+					%s
+				</div>
+			</body>
+		</html>`, otp))
 
 	d := mail.NewDialer(smtpHost, smtpPort, from, password)
 	if err := d.DialAndSend(m); err != nil {
@@ -39,5 +59,5 @@ func SendEmail(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.Status(fiber.StatusOK).
-		JSON(fiber.Map{"status": "true", "message": "OTP Sent Successfully"})
+		JSON(fiber.Map{"status": "true", "message": "OTP Sent Successfully", "otp": otp})
 }

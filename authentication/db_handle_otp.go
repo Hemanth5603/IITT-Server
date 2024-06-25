@@ -9,7 +9,7 @@ import (
 
 func DBHandleOTP(token string, otp string) error {
 	_, err := infrastructure.POSTGRES_DB.Exec(
-		`INSERT INTO verification(token, otp) values($1, $2)`,
+		"INSERT INTO verification(token, otp) values($1, $2)",
 		token,
 		otp,
 	)
@@ -18,13 +18,19 @@ func DBHandleOTP(token string, otp string) error {
 	}
 	fmt.Println("inserted otp")
 
-	go func() {
-		time.Sleep(time.Second * 60)
-		_, err = infrastructure.POSTGRES_DB.Exec(
-			"DELETE FROM verification WHERE token = $1", token)
-		fmt.Println("Delete otp after 60 sec")
-	}()
+	// Start a new goroutine to delete the OTP after 60 seconds
+	go deleteOTPAfter60Seconds(token)
 
-	return err
+	return nil
+}
 
+func deleteOTPAfter60Seconds(token string) {
+	time.Sleep(time.Second * 60)
+	_, err := infrastructure.POSTGRES_DB.Exec(
+		"DELETE FROM verification WHERE token = $1", token)
+	if err != nil {
+		fmt.Println("Error deleting OTP:", err)
+	} else {
+		fmt.Println("Deleted OTP after 60 sec")
+	}
 }
