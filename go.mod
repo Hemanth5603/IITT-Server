@@ -10,10 +10,18 @@ require (
 )
 
 require (
+	github.com/antihax/optional v1.0.0 // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang/mock v1.6.0 // indirect
+	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/souvikhaldar/gobudgetsms v0.0.0-20181104103442-ac7075c13441 // indirect
+	github.com/vonage/vonage-go-sdk v0.14.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d // indirect
+	google.golang.org/appengine v1.4.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/mail.v2 v2.3.1 // indirect
 )

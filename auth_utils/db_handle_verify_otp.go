@@ -1,4 +1,4 @@
-package authentication
+package auth_utils
 
 import (
 	"fmt"

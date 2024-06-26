@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/Hemanth5603/IITT-Server/authentication"
+	"github.com/Hemanth5603/IITT-Server/auth_handlers"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -13,8 +13,9 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/getLeaderBoard", GetLeaderBoard)
 	routes.Post("/iitt/getUser", GetUser)
 	routes.Post("/iitt/updateProfile", UpdateProfile)
-	//routes.Post("/iitt/otp", authentication.SendSms)
-	routes.Post("/iitt/sendEmail", authentication.SendEmail)
-	routes.Post("/iitt/verifyOtp", authentication.VerifyOtp)
+	routes.Post("/iitt/sendSms", auth_handlers.SendSms)
+	routes.Post("/iitt/verifySms", auth_handlers.VerifySms)
+	routes.Post("/iitt/sendEmail", auth_handlers.SendEmail)
+	routes.Post("/iitt/verifyOtp", auth_handlers.VerifyOtp)
 
 }

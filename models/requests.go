@@ -19,7 +19,7 @@ type SignUpRequest struct {
 }
 
 type LoginInRequest struct {
-	Email    string `json:"email"`
+	Phone    string `json:"phone"`
 	Password string `json:"password"`
 }
 
@@ -49,4 +49,13 @@ type SendMailRequest struct {
 type VerifyOtpRequest struct {
 	Token string `json:"token"`
 	Otp   string `json:"otp"`
+}
+
+type SentVonageOTPRequest struct {
+	Phone string `json:"phone"`
+}
+
+type VerifyVonageOTP struct {
+	RequestID string `json:"request_id"`
+	OTP       string `json:"otp"`
 }

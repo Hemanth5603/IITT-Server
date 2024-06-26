@@ -1,4 +1,4 @@
-package authentication
+package auth_utils
 
 import (
 	"log"
@@ -31,4 +31,19 @@ func envSERVICESID() string {
 		log.Fatal("Error loading .env file")
 	}
 	return os.Getenv("TWILIO_SERVICES_ID")
+}
+
+func envVAPIKEY() string {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	return os.Getenv("VONAGE_API_KEY")
+}
+func envVSECRETKEY() string {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	return os.Getenv("VONAGE_API_SECRET")
 }

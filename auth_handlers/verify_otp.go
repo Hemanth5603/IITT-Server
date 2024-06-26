@@ -1,8 +1,9 @@
-package authentication
+package auth_handlers
 
 import (
 	"fmt"
 
+	"github.com/Hemanth5603/IITT-Server/auth_utils"
 	"github.com/Hemanth5603/IITT-Server/models"
 	"github.com/gofiber/fiber/v2"
 )
@@ -15,7 +16,7 @@ func VerifyOtp(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	status, err := DBHandleVerifyOtp(payload.Token, payload.Otp)
+	status, err := auth_utils.DBHandleVerifyOtp(payload.Token, payload.Otp)
 
 	if err != nil {
 		return ctx.Status(fiber.StatusNotFound).
