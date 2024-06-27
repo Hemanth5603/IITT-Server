@@ -1,18 +1,16 @@
 package utils
 
 import (
-	"time"
-
 	"github.com/Hemanth5603/IITT-Server/infrastructure"
 	"github.com/Hemanth5603/IITT-Server/models"
 )
 
 func InsertData(data models.DataModel) error {
-	currentTime := time.Now()
+	//currentTime := time.Now()
 
 	// Format the time in HH:MM:SS format
-	time := currentTime.Format("15:04:05")
-	date := currentTime.Format("2006-01-02")
+	//time := currentTime.Format("15:04:05")
+	//date := currentTime.Format("2006-01-02")
 
 	_, err := infrastructure.POSTGRES_DB.Exec(
 		`INSERT INTO data(id, latitude, longitude, image, category, remarks, address, date, time) values($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
@@ -23,8 +21,8 @@ func InsertData(data models.DataModel) error {
 		data.Category,
 		data.Remarks,
 		data.Address,
-		date,
-		time,
+		data.Date,
+		data.Time,
 	)
 	if err != nil {
 		return err

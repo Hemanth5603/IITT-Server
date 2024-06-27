@@ -57,6 +57,8 @@ func uploadData(ctx *fiber.Ctx) error {
 		Category:  payload.Category,
 		Remarks:   payload.Remarks,
 		Address:   payload.Address,
+		Date:      payload.Date,
+		Time:      payload.Time,
 	}
 
 	err = utils.InsertData(data)

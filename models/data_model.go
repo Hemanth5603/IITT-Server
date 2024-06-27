@@ -27,6 +27,8 @@ type DataModel struct {
 	Category  string  `form:"category"`
 	Remarks   string  `form:"remarks"`
 	Address   string  `form:"address"`
+	Date      string  `form:"date"`
+	Time      string  `form:"time"`
 }
 
 type OTPData struct {
