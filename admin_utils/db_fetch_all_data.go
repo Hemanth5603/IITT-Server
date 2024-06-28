@@ -10,7 +10,7 @@ func DBFetchUnApprovedData() ([]models.DataModel, error) {
 
 	rows, err := infrastructure.POSTGRES_DB.Query(
 		"SELECT id, latitude, longitude, image, category, remarks, address, date, time, is_approved FROM data WHERE is_approved = $1",
-		false,
+		0,
 	)
 	if err != nil {
 		return dataList, err
@@ -28,7 +28,7 @@ func DBFetchUnApprovedData() ([]models.DataModel, error) {
 			address     string
 			date        string
 			time        string
-			is_approved bool
+			is_approved int64
 		)
 		if err := rows.Scan(&id, &latitude, &longitude, &image, &category, &remarks, &address, &date, &time, &is_approved); err != nil {
 			return dataList, err

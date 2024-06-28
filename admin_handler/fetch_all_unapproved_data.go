@@ -1,4 +1,4 @@
-package admin_handler
+package adminhandler
 
 import (
 	adminutils "github.com/Hemanth5603/IITT-Server/admin_utils"
@@ -7,7 +7,7 @@ import (
 )
 
 func FetchAllUnApprovedData(ctx *fiber.Ctx) error {
-	print("called")
+
 	var dataList []models.DataModel = []models.DataModel{}
 
 	dataList, err := adminutils.DBFetchUnApprovedData()

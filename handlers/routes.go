@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/Hemanth5603/IITT-Server/admin_handler"
+	adminhandler "github.com/Hemanth5603/IITT-Server/admin_handler"
 	"github.com/Hemanth5603/IITT-Server/auth_handlers"
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,6 +18,8 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/verifySms", auth_handlers.VerifySms)
 	routes.Post("/iitt/sendEmail", auth_handlers.SendEmail)
 	routes.Post("/iitt/verifyOtp", auth_handlers.VerifyOtp)
-	routes.Get("/iitt-admin/fetch-data", admin_handler.FetchAllUnApprovedData)
+	routes.Get("/iitt-admin/fetch-data", adminhandler.FetchAllUnApprovedData)
+	routes.Post("/iitt-admin/approve-data", adminhandler.ApproveData)
+	routes.Post("/iitt-admin/reject-data", adminhandler.RejectData)
 
 }
