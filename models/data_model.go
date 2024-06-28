@@ -20,13 +20,16 @@ type UserModel struct {
 }
 
 type DataModel struct {
-	Id        int64   `form:"id"`
-	Latitude  float64 `form:"latitude"`
-	Longitude float64 `form:"longitude"`
-	Image     string  `form:"image"`
-	Category  string  `form:"category"`
-	Remarks   string  `form:"remarks"`
-	Address   string  `form:"address"`
+	Id         int64   `form:"id"`
+	Latitude   float64 `form:"latitude"`
+	Longitude  float64 `form:"longitude"`
+	Image      string  `form:"image"`
+	Category   string  `form:"category"`
+	Remarks    string  `form:"remarks"`
+	Address    string  `form:"address"`
+	Time       string  `form:"time"`
+	Date       string  `form:"data"`
+	IsApproved bool    `form:"is_approved"`
 }
 
 type OTPData struct {

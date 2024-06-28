@@ -28,6 +28,6 @@ func VerifyOtp(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.Status(fiber.StatusOK).
-		JSON(fiber.Map{"status": "false", "message": "OTP Verification Successfull"})
+		JSON(fiber.Map{"status": "true", "message": "OTP Verification Successfull"})
 
 }
