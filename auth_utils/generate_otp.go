@@ -1,4 +1,4 @@
-package authentication
+package auth_utils
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func generateOTP() string {
+func GenerateOTP() string {
 	rand.Seed(time.Now().UnixNano())
 	otp := fmt.Sprintf("%06d", rand.Intn(1000000))
 	return otp

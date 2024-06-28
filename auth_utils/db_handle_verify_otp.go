@@ -1,4 +1,4 @@
-package authentication
+package auth_utils
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ func DBHandleVerifyOtp(token string, otp string) (int, error) {
 	var tokenExist string
 	var actualOtp string
 	err := infrastructure.POSTGRES_DB.QueryRow(
-		`SELECT token FROM verification WHERE token = $1 AND created_at < NOW() - INTERVAL 1 MINUTE`, token,
+		`SELECT token FROM verification WHERE token = $1`, token,
 	).Scan(&tokenExist)
 	fmt.Println(tokenExist)
 

@@ -1,8 +1,9 @@
-package authentication
+package auth_handlers
 
 import (
 	"fmt"
 
+	"github.com/Hemanth5603/IITT-Server/auth_utils"
 	"github.com/Hemanth5603/IITT-Server/models"
 	"github.com/gofiber/fiber/v2"
 	"gopkg.in/mail.v2"
@@ -15,7 +16,7 @@ func SendEmail(ctx *fiber.Ctx) error {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
-	otp := generateOTP()
+	otp := auth_utils.GenerateOTP()
 	from := "shemanth.kgp@gmail.com"
 	password := "cpcrwjzjuyndskol"
 	smtpHost := "smtp.gmail.com"
@@ -52,7 +53,7 @@ func SendEmail(ctx *fiber.Ctx) error {
 		return err
 	}
 
-	err := DBHandleOTP(payload.Token, otp)
+	err := auth_utils.DBHandleOTP(payload.Token, otp)
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})

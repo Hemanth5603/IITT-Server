@@ -31,6 +31,10 @@ jobs:
               run: echo "SPACES_ACCESS_KEY=${{ secrets.SPACES_ACCESS_KEY}}" >> .env
             - name: Inserting secret key 
               run: echo "SPACES_SECRET_KEY=${{ secrets.SPACES_SECRET_KEY}}" >> .env
+            - name: Inserting Vonage API Key
+              run: echo "VONAGE_API_KEY=${{ secrets.VONAGE_API_KEY}}" >> .env
+            - name: Inserting Vonage Secret Key
+              run: echo "VONAGE_API_SECRET=${{ secrets.VONAGE_API_SECRET}}" >> .env
             - name: Login to Docker Hub
               run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
             - name: Build docker contianer

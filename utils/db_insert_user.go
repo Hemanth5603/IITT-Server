@@ -10,11 +10,11 @@ import (
 func InsertUser(payload models.SignUpRequest) (int64, error) {
 	var id int64
 
-	var existingEmail string
+	var existingPhone string
 	err := infrastructure.POSTGRES_DB.QueryRow(
-		`SELECT email FROM users WHERE email = $1`, payload.Email,
-	).Scan(&existingEmail)
-	fmt.Print(existingEmail)
+		`SELECT phone FROM users WHERE phone = $1`, payload.Phone,
+	).Scan(&existingPhone)
+	fmt.Print(existingPhone)
 
 	if err == nil || err.Error() == "no rows in result set" {
 
