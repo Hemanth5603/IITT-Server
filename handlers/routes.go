@@ -18,6 +18,6 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/verifySms", auth_handlers.VerifySms)
 	routes.Post("/iitt/sendEmail", auth_handlers.SendEmail)
 	routes.Post("/iitt/verifyOtp", auth_handlers.VerifyOtp)
-	routes.Post("/iitt-admin/fetch-data", admin_handler.FetchAllUnApprovedData)
+	routes.Get("/iitt-admin/fetch-data", admin_handler.FetchAllUnApprovedData)
 
 }
