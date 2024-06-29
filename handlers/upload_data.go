@@ -49,7 +49,7 @@ func uploadData(ctx *fiber.Ctx) error {
 		fmt.Printf(idFile)
 
 	}
-	data := models.DataModel{
+	data := models.DataModelRequest{
 		Id:         payload.Id,
 		Latitude:   payload.Latitude,
 		Longitude:  payload.Longitude,

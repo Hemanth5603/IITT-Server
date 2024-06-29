@@ -5,7 +5,7 @@ import (
 	"github.com/Hemanth5603/IITT-Server/models"
 )
 
-func InsertData(data models.DataModel) error {
+func InsertData(data models.DataModelRequest) error {
 	//currentTime := time.Now()
 
 	// Format the time in HH:MM:SS format

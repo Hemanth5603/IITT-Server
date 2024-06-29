@@ -27,7 +27,7 @@ type DataModelRequest struct {
 	Remarks    string  `form:"remarks"`
 	Address    string  `form:"address"`
 	Time       string  `form:"time"`
-	Date       string  `form:"data"`
+	Date       string  `form:"date"`
 	IsApproved int64   `form:"is_approved"`
 }
 
