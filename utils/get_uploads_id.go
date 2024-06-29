@@ -9,7 +9,7 @@ func GetUploadsByUserID(user_id string) ([]models.DataModel, error) {
 	var dataList []models.DataModel
 
 	rows, err := infrastructure.POSTGRES_DB.Query(
-		"SELECT id, latitude, longitude, image, category, remarks, address FROM data WHERE id = $1",
+		"SELECT id, latitude, longitude, image, category, remarks, address, date, time FROM data WHERE id = $1",
 		user_id,
 	)
 	if err != nil {
@@ -26,8 +26,10 @@ func GetUploadsByUserID(user_id string) ([]models.DataModel, error) {
 			category  string
 			remarks   string
 			address   string
+			date      string
+			time      string
 		)
-		if err := rows.Scan(&id, &latitude, &longitude, &image, &category, &remarks, &address); err != nil {
+		if err := rows.Scan(&id, &latitude, &longitude, &image, &category, &remarks, &address, &date, &time); err != nil {
 			return dataList, err
 		}
 		dataList = append(dataList, models.DataModel{
@@ -38,6 +40,8 @@ func GetUploadsByUserID(user_id string) ([]models.DataModel, error) {
 			Category:  category,
 			Remarks:   remarks,
 			Address:   address,
+			Date:      date,
+			Time:      time,
 		})
 
 	}

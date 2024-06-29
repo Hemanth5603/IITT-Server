@@ -30,6 +30,7 @@ type DataModel struct {
 	Time       string  `form:"time"`
 	Date       string  `form:"data"`
 	IsApproved int64   `form:"is_approved"`
+	DataId     int64   `form:"data_id"`
 }
 
 type OTPData struct {
