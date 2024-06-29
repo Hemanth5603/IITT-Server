@@ -18,6 +18,19 @@ type SignUpRequest struct {
 	Occupation    string `json:"occupation"`
 }
 
+type DataModelRequest struct {
+	Id         int64   `form:"id"`
+	Latitude   float64 `form:"latitude"`
+	Longitude  float64 `form:"longitude"`
+	Image      string  `form:"image"`
+	Category   string  `form:"category"`
+	Remarks    string  `form:"remarks"`
+	Address    string  `form:"address"`
+	Time       string  `form:"time"`
+	Date       string  `form:"data"`
+	IsApproved int64   `form:"is_approved"`
+}
+
 type LoginInRequest struct {
 	Phone    string `json:"phone"`
 	Password string `json:"password"`

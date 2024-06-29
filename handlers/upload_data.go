@@ -12,7 +12,7 @@ import (
 )
 
 func uploadData(ctx *fiber.Ctx) error {
-	var payload models.DataModel
+	var payload models.DataModelRequest
 	if err := ctx.BodyParser(&payload); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
@@ -50,15 +50,16 @@ func uploadData(ctx *fiber.Ctx) error {
 
 	}
 	data := models.DataModel{
-		Id:        payload.Id,
-		Latitude:  payload.Latitude,
-		Longitude: payload.Longitude,
-		Image:     idFile,
-		Category:  payload.Category,
-		Remarks:   payload.Remarks,
-		Address:   payload.Address,
-		Date:      payload.Date,
-		Time:      payload.Time,
+		Id:         payload.Id,
+		Latitude:   payload.Latitude,
+		Longitude:  payload.Longitude,
+		Image:      idFile,
+		Category:   payload.Category,
+		Remarks:    payload.Remarks,
+		Address:    payload.Address,
+		Date:       payload.Date,
+		Time:       payload.Time,
+		IsApproved: payload.IsApproved,
 	}
 
 	err = utils.InsertData(data)
