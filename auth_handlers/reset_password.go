@@ -9,13 +9,14 @@ import (
 )
 
 func ResetPassword(ctx *fiber.Ctx) error {
-	var payload models.ResetPasswordRequest
+	var payload models.LoginInRequest
 
 	if err := ctx.BodyParser(&payload); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
-
+	println(payload.Password)
+	println(payload.Email)
 	id, _, err := utils.DBCheckUserExists(payload.Email)
 
 	if err != nil {
@@ -23,13 +24,14 @@ func ResetPassword(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	hashedPassword, err := helpers.HashPassword(payload.NewPassword)
+	hashedPassword, err := helpers.HashPassword(payload.Password)
 
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).
 			JSON(fiber.Map{"status": "false", "err": err.Error()})
 	}
-
+	println(id)
+	println(hashedPassword)
 	err = auth_utils.DBResetPassword(id, hashedPassword)
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
