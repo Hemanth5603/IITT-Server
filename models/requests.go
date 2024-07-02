@@ -32,7 +32,7 @@ type DataModelRequest struct {
 }
 
 type LoginInRequest struct {
-	Phone    string `json:"phone"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
@@ -72,4 +72,8 @@ type SentVonageOTPRequest struct {
 type VerifyVonageOTP struct {
 	RequestID string `json:"request_id"`
 	OTP       string `json:"otp"`
+}
+
+type DeleteExpiredOtpRequest struct {
+	Token string `json:"token"`
 }

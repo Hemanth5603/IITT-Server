@@ -18,7 +18,7 @@ func Login(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	findUser, err := utils.FindUserByPhone(payload.Phone)
+	findUser, err := utils.FindUserByEmail(payload.Email)
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
