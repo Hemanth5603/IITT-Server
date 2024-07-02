@@ -22,5 +22,7 @@ func Routes(routes *fiber.App) {
 	routes.Get("/iitt-admin/fetch-data", adminhandler.FetchAllUnApprovedData)
 	routes.Post("/iitt-admin/approve-data", adminhandler.ApproveData)
 	routes.Post("/iitt-admin/reject-data", adminhandler.RejectData)
+	routes.Post("/iitt/resetPasswordEmail", auth_handlers.ResetPasswordEmail)
+	routes.Post("/iitt/resetPassword", auth_handlers.ResetPassword)
 
 }

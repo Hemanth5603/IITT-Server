@@ -17,8 +17,8 @@ func SendEmail(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 	otp := auth_utils.GenerateOTP()
-	from := "shemanth.kgp@gmail.com"
-	password := "cpcrwjzjuyndskol"
+	from := "outreach@iittnif.com"
+	password := "eusfgdljcklenfmi"
 	smtpHost := "smtp.gmail.com"
 	smtpPort := 587
 

@@ -5,6 +5,7 @@ import (
 
 	"github.com/Hemanth5603/IITT-Server/auth_utils"
 	"github.com/Hemanth5603/IITT-Server/models"
+	"github.com/Hemanth5603/IITT-Server/utils"
 	"github.com/gofiber/fiber/v2"
 	"gopkg.in/mail.v2"
 )
@@ -18,9 +19,21 @@ func ResetPasswordEmail(ctx *fiber.Ctx) error {
 	}
 	otp := auth_utils.GenerateOTP()
 	from := "outreach@iittnif.com"
-	password := "cpcrwjzjuyndskol"
+	password := "eusfgdljcklenfmi"
 	smtpHost := "smtp.gmail.com"
 	smtpPort := 587
+
+	_, status, err := utils.DBCheckUserExists(payload.To)
+
+	if err != nil {
+		return ctx.Status(fiber.StatusBadRequest).
+			JSON(fiber.Map{"status": "false", "error": err.Error()})
+	}
+
+	if status == 404 {
+		return ctx.Status(fiber.StatusNotFound).
+			JSON(fiber.Map{"status": "false", "error": err, "message": "User Does not exist"})
+	}
 
 	// imagePath := "assets/iittnmicps.png"
 	// imageData, err := ioutil.ReadFile(imagePath)
@@ -53,7 +66,7 @@ func ResetPasswordEmail(ctx *fiber.Ctx) error {
 		return err
 	}
 
-	err := auth_utils.DBHandleOTP(payload.Token, otp)
+	err = auth_utils.DBHandleOTP(payload.Token, otp)
 	if err != nil {
 		return ctx.Status(fiber.StatusBadRequest).
 			JSON(fiber.Map{"status": "false", "error": err.Error()})

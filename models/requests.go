@@ -77,3 +77,8 @@ type VerifyVonageOTP struct {
 type DeleteExpiredOtpRequest struct {
 	Token string `json:"token"`
 }
+
+type ResetPasswordRequest struct {
+	Email       string `json:"email"`
+	NewPassword string `json:"new_password"`
+}
