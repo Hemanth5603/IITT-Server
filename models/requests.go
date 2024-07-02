@@ -80,5 +80,5 @@ type DeleteExpiredOtpRequest struct {
 
 type ResetPasswordRequest struct {
 	Email       string `json:"email"`
-	NewPassword string `json:"new_password"`
+	NewPassword string `json:"password"`
 }
