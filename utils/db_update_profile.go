@@ -9,14 +9,14 @@ func DBUpdateProfile(updateValues models.ProfileUpdateRequest, profileImage stri
 
 	fullName := updateValues.FirstName + " " + updateValues.LastName
 
-	_, err := infrastructure.POSTGRES_DB.Exec(`UPDATE users SET firstname = $1, lastname = $2, dob = $3, occupation = $4, profileimage = $5, name = $6, email = $7 WHERE id = $8`,
+	_, err := infrastructure.POSTGRES_DB.Exec(`UPDATE users SET firstname = $1, lastname = $2, dob = $3, occupation = $4, profileimage = $5, name = $6, phone = $7 WHERE id = $8`,
 		updateValues.FirstName,
 		updateValues.LastName,
 		updateValues.Dob,
 		updateValues.Occupation,
 		profileImage,
 		fullName,
-		updateValues.Email,
+		updateValues.Phone,
 		updateValues.Id,
 	)
 

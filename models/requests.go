@@ -44,7 +44,7 @@ type ProfileUpdateRequest struct {
 	Id           int64  `form:"id"`
 	FirstName    string `form:"firstname"`
 	LastName     string `form:"lastname"`
-	Email        string `form:"email"`
+	Phone        string `form:"phone"`
 	ProfileImage string `form:"profileimage"`
 	Dob          string `form:"dob"`
 	Occupation   string `form:"occupation"`
