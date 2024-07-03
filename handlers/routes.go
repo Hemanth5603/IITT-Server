@@ -13,6 +13,7 @@ func Routes(routes *fiber.App) {
 	routes.Get("/iitt/getUserUploads/:user_id", GetUploads)
 	routes.Post("/iitt/getLeaderBoard", GetLeaderBoard)
 	routes.Post("/iitt/getUser", GetUser)
+	routes.Post("/iitt/deleteData", DeleteData)
 	routes.Post("/iitt/updateProfile", UpdateProfile)
 	routes.Post("/iitt/sendSms", auth_handlers.SendSms)
 	routes.Post("/iitt/verifySms", auth_handlers.VerifySms)

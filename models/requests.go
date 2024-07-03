@@ -82,3 +82,7 @@ type ResetPasswordRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"resetpassword"`
 }
+
+type DeleteDataRequest struct {
+	DataId int64 `json:"data_id"`
+}
