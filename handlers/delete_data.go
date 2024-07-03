@@ -21,6 +21,6 @@ func DeleteData(ctx *fiber.Ctx) error {
 			JSON(fiber.Map{"status": "false", "error": err.Error()})
 	}
 
-	return ctx.Status(fiber.StatusBadRequest).
+	return ctx.Status(fiber.StatusOK).
 		JSON(fiber.Map{"status": "true", "message": "Data delete succesfully"})
 }
