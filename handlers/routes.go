@@ -25,5 +25,6 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt-admin/reject-data", adminhandler.RejectData)
 	routes.Post("/iitt/resetPasswordEmail", auth_handlers.ResetPasswordEmail)
 	routes.Post("/iitt/resetPassword", auth_handlers.ResetPassword)
+	routes.Post("/iitt/deleteAccount", DeleteAccount)
 
 }

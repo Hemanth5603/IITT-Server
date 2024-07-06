@@ -84,5 +84,9 @@ type ResetPasswordRequest struct {
 }
 
 type DeleteDataRequest struct {
-	DataId int64 `json:"data_id"`
+	DataId int64 `json:"dataid"`
+}
+
+type DeleteAccountRequest struct {
+	Id int64 `json:"id"`
 }
