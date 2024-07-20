@@ -16,6 +16,7 @@ type SignUpRequest struct {
 	City          string `json:"city"`
 	Pincode       int64  `json:"pincode"`
 	Occupation    string `json:"occupation"`
+	Gender        string `json:"gender"`
 }
 
 type DataModelRequest struct {
