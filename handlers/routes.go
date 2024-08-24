@@ -3,6 +3,7 @@ package handlers
 import (
 	adminhandler "github.com/Hemanth5603/IITT-Server/admin_handler"
 	"github.com/Hemanth5603/IITT-Server/auth_handlers"
+	"github.com/Hemanth5603/IITT-Server/portfolio"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -26,5 +27,7 @@ func Routes(routes *fiber.App) {
 	routes.Post("/iitt/resetPasswordEmail", auth_handlers.ResetPasswordEmail)
 	routes.Post("/iitt/resetPassword", auth_handlers.ResetPassword)
 	routes.Post("/iitt/deleteAccount", DeleteAccount)
+
+	routes.Post("/coderxop/reachme", portfolio.SendReachMeEmail)
 
 }
