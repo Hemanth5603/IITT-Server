@@ -12,7 +12,7 @@ func main() {
 
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*", // You can specify specific origins here, e.g., "https://your-vercel-app.vercel.app"
+		AllowOrigins: "*, https://coderxop.vercel.app/", // You can specify specific origins here, e.g., "https://your-vercel-app.vercel.app"
 		AllowMethods: "GET, POST, PUT, DELETE, OPTIONS",
 		AllowHeaders: "Content-Type, Authorization",
 	}))
