@@ -7,7 +7,6 @@ import (
 	"mime/multipart"
 	"net/http"
 
-	davidutils "github.com/Hemanth5603/IITT-Server/david_utils"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -68,7 +67,7 @@ func FindFace(ctx *fiber.Ctx) error {
 	defer resp.Body.Close()
 
 	// Decode the response from the external server
-	var response map[string]inerface{}
+	var response map[string]interface{}
 	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status": "false",
@@ -76,7 +75,6 @@ func FindFace(ctx *fiber.Ctx) error {
 		})
 	}
 
-	//return ctx.JSON(response)
+	return ctx.JSON(response)
 
-	student, err := davidutils.DBFetchStudentRoll(rollNumber)
 }
