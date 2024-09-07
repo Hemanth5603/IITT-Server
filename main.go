@@ -12,8 +12,10 @@ func main() {
 
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*",
-		AllowMethods: "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
+		AllowOrigins:     "*", // You can specify specific origins here, e.g., "https://your-vercel-app.vercel.app"
+		AllowMethods:     "GET, POST, PUT, DELETE, OPTIONS",
+		AllowHeaders:     "Content-Type, Authorization",
+		AllowCredentials: true,
 	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {

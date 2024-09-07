@@ -1,6 +1,7 @@
 package portfolio
 
 import (
+	"crypto/tls"
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
@@ -32,8 +33,11 @@ func SendReachMeEmail(ctx *fiber.Ctx) error {
 		</html>`, payload.Email, payload.Message))
 
 	d := mail.NewDialer(smtpHost, smtpPort, from, password)
+	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+
 	if err := d.DialAndSend(m); err != nil {
-		return err
+		return ctx.Status(fiber.StatusInternalServerError).
+			JSON(fiber.Map{"status": "false", "error": "Failed to send email", "details": err.Error()})
 	}
 
 	return ctx.Status(fiber.StatusOK).
