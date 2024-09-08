@@ -7,6 +7,8 @@ import (
 	"mime/multipart"
 	"net/http"
 
+	davidmodels "github.com/Hemanth5603/IITT-Server/david_models"
+	davidutils "github.com/Hemanth5603/IITT-Server/david_utils"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -57,7 +59,7 @@ func FindFace(ctx *fiber.Ctx) error {
 	writer.Close()
 
 	// Send the POST request to the external server
-	resp, err := http.Post("https://6906-2409-40f0-1f-68b2-e524-ee8-5046-b55c.ngrok-free.app/upload-image", writer.FormDataContentType(), &b)
+	resp, err := http.Post("https://b426-2409-40f0-25-ff7-c865-c8b4-fe2c-a943.ngrok-free.app/upload-image", writer.FormDataContentType(), &b)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status": "false",
@@ -65,16 +67,35 @@ func FindFace(ctx *fiber.Ctx) error {
 		})
 	}
 	defer resp.Body.Close()
+	print(resp.Body)
 
-	// Decode the response from the external server
-	var response map[string]interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(&davidmodels.FindFaceResponse); err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status": "false",
 			"error":  "Failed to decode response from external server",
 		})
 	}
 
-	return ctx.JSON(response)
+	rollValue := davidmodels.FindFaceResponse.Roll
+	print(rollValue)
+
+	student, err := davidutils.DBFetchStudentRoll(rollValue)
+	if err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).
+			JSON(fiber.Map{"error": err.Error(), "status": "false"})
+	}
+
+	return ctx.Status(fiber.StatusOK).
+		JSON(fiber.Map{
+			"status":   "success",
+			"Id":       student.Id,
+			"Name":     student.Name,
+			"Branch":   student.Branch,
+			"Phone":    student.Branch,
+			"Roll":     student.Roll,
+			"Academic": student.AcademicYear,
+			"Semester": student.Semester,
+			"Section":  student.Section,
+		})
 
 }
