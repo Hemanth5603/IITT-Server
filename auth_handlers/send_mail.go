@@ -18,7 +18,8 @@ func SendEmail(ctx *fiber.Ctx) error {
 	}
 	otp := auth_utils.GenerateOTP()
 	from := "outreach@iittnif.com"
-	password := "eusfgdljcklenfmi"
+	//password := "eusfgdljcklenfmi"\
+	password := "cnnxkiihsvqldwrz"
 	smtpHost := "smtp.gmail.com"
 	smtpPort := 587
 

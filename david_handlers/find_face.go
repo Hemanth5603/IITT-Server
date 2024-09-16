@@ -91,7 +91,7 @@ func FindFace(ctx *fiber.Ctx) error {
 			"Id":       student.Id,
 			"Name":     student.Name,
 			"Branch":   student.Branch,
-			"Phone":    student.Branch,
+			"Phone":    student.Phone,
 			"Roll":     student.Roll,
 			"Academic": student.AcademicYear,
 			"Semester": student.Semester,
