@@ -59,7 +59,7 @@ func FindFace(ctx *fiber.Ctx) error {
 	writer.Close()
 
 	// Send the POST request to the external server
-	resp, err := http.Post("https://b14a-152-59-195-14.ngrok-free.app/upload-image", writer.FormDataContentType(), &b)
+	resp, err := http.Post("https://df95-2409-40f0-161-1a8-248b-21dc-1249-6dfe.ngrok-free.app/upload-image", writer.FormDataContentType(), &b)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"status": "false",
